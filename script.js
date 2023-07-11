@@ -35,34 +35,16 @@ class Ship{
     attack(targetShip, attackedValue){
         const hitProbability = Math.random();
         if(hitProbability < this._accuracy){
+            console.log(`You hit ${targetShip.name} for ${attackedValue} damage and now their health is ${targetShip.hull}`)
             return targetShip.hull -= attackedValue
+            
         }else{
             console.log(`Your shot at ${targetShip.name} missed`)
         }
         
     }
 
-}
-
-
-class UssAssembly extends Ship{
-    constructor(name,hull, firePower, accuracy){
-        super(name, hull, firePower, accuracy)
-    }
-
-    get hull(){
-       return this._hull 
-    }
-
-    set hull(value){
-        if(value >= 0){
-            this._hull = value
-        }else{
-            console.log(`Your ship was destroyed`)
-        }
-    }
-
-    startGunfight(enemyShip){}
+    startGunfight(enemyShip){
     // For Each alien ship that is alive in my array: 
 
     // use startGunFight method 
@@ -71,38 +53,36 @@ class UssAssembly extends Ship{
     //Reguardless of hit or miss alien ship will attack next given accuracy
 
     //Call gunFight within itself 
-
-
+    }
 
 }
 
 
+class AlienShip extends Ship{
+    constructor(name){
+        const hull = Math.random() * 3 + 3
+        const firePower = Math.random() * 2 + 4
+        const accuracy = Math.random() * 0.2 + 0.6
+
+        super(name, hull, firePower, accuracy);
+    }
+}
+
+const MyAlienShip = new AlienShip;
+//Checks to see if my test for alien ship works
+// console.log(MyAlienShip.firePower)
+// console.log(MyAlienShip.hull);
+// console.log(MyAlienShip.accuracy)
 
 
+const numberOfShips = 6;
+const ships = [
+new AlienShip('Alien1'),
+new AlienShip('Alien2'),
+new AlienShip('Alien3'),
+new AlienShip('Alien4'),
+new AlienShip('Alien5'),
+new AlienShip('Alien6'),
+];
 
 
-
-const hitProbability = Math.random();
-console.log(hitProbability)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let alienHull = Math.random() * 3 + 3;
-// const ussAssembly = new Ship('ussAssembly',20,5,0.7)
-// const alienShip = new Ship('alienShip',alienHull)
-
-// console.log(ussAssembly.accuracy)
-// console.log(ussAssembly.getAttacked(1))
-// console.log(`Alient hull is ${alienHull}`)
-// console.log(ussAssembly.attack(alienShip,1));
