@@ -63,9 +63,11 @@ class AlienShip extends Ship{
     }
 }
 
-
+//Instanciated my class
 const UssAssembly = new Ship('ussAssembly',20,5,.7);
 
+
+//Sadly I did not use a for loop to just make the six ships. In later verions today i will make a for loop for this!
 const numberOfShips = 6;
 const ships = [
 new AlienShip('Alien1'),
@@ -76,6 +78,7 @@ new AlienShip('Alien5'),
 new AlienShip('Alien6'),
 ];
 
+//Both of my vanilla buttons
 const startGunFightButton = document.getElementById('Start-Conflict')
 const runAway = document.getElementById('Run-Away')
 
@@ -85,12 +88,16 @@ const turnOffButtons = function (){
 }
 
 
-
+//Once clicked I simply disable the buttons (usuing the function above^^^^) using the function above
 runAway.addEventListener('click' , () =>{
      turnOffButtons();
      console.log(`You ran away`)
 })
 
+//This kinda is bad because I could have just used a for loop after my-
+//event listener below I will highlight keep elements that cued me in on why I couldve just used a for loop
+
+//this is the same as saying let i=0;
 let shipTargetingIndex = 0;
 
 startGunFightButton.addEventListener('click', () =>{
@@ -102,8 +109,10 @@ startGunFightButton.addEventListener('click', () =>{
             targetedShip.attack(UssAssembly)
         }else{
             console.log(`${targetedShip.name} have been defeated`)
+            //My increment
             shipTargetingIndex++;
 
+            //My condition to keep looping 
             if(shipTargetingIndex >= ships.length){
                 turnOffButtons()
                 console.log('All Ships have been destroyed')
