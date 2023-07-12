@@ -32,11 +32,11 @@ class Ship{
       
     }
 
-    attack(targetShip, attackedValue){
+    attack(targetShip){
         const hitProbability = Math.random();
         if(hitProbability < this._accuracy){
-            console.log(`You hit ${targetShip.name} for ${attackedValue} damage and now their health is ${targetShip.hull}`)
-            return targetShip.hull -= attackedValue
+            console.log(` ${targetShip.name} hit for ${this.firePower} damage and now their health is ${targetShip.hull}`)
+            return targetShip.hull -= this.firePower
             
         }else{
             console.log(`Your shot at ${targetShip.name} missed`)
@@ -45,6 +45,9 @@ class Ship{
     }
 
     startGunfight(enemyShip){
+    for(let i =0; enimies.length; i++){
+
+    }
     // For Each alien ship that is alive in my array: 
 
     // use startGunFight method 
@@ -68,13 +71,16 @@ class AlienShip extends Ship{
     }
 }
 
-const MyAlienShip = new AlienShip;
-//Checks to see if my test for alien ship works
-// console.log(MyAlienShip.firePower)
-// console.log(MyAlienShip.hull);
-// console.log(MyAlienShip.accuracy)
 
+//I INSTACIATED MY USS CLASS
+const UssAssembly = new Ship('ussAssembly',20,5,.7);
 
+//Checking the properties of my INSTANCIATED class
+console.log(UssAssembly.hull)
+console.log(UssAssembly.firePower)
+console.log(UssAssembly.accuracy)
+
+//I INSTANCIATED MY ALIEN CLASSES
 const numberOfShips = 6;
 const ships = [
 new AlienShip('Alien1'),
@@ -85,4 +91,11 @@ new AlienShip('Alien5'),
 new AlienShip('Alien6'),
 ];
 
+// Checks to see if my test for alien ship works
+console.log(ships[0].firePower)
+console.log(ships[0].hull);
+console.log(ships[0].accuracy)
 
+//Check to see if My attack function works on both ends of my class instanstiation
+console.log(UssAssembly.attack(ships[0]))
+console.log(ships[0].attack(UssAssembly))
