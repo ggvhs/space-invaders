@@ -66,17 +66,20 @@ class AlienShip extends Ship{
 //Instanciated my class
 const UssAssembly = new Ship('ussAssembly',20,5,.7);
 
-
-//Sadly I did not use a for loop to just make the six ships. In later verions today i will make a for loop for this!
 const numberOfShips = 6;
 const ships = [
-new AlienShip('Alien1'),
-new AlienShip('Alien2'),
-new AlienShip('Alien3'),
-new AlienShip('Alien4'),
-new AlienShip('Alien5'),
-new AlienShip('Alien6'),
+
 ];
+
+//This is my updated code for more effective use of INSTANCIATING using a for loop
+//compared to previous commits if I wanna add 30 ships I can now just say numberOfShips = 30 instead of copying and pasting 24 more times 
+for(let i =0; i <= numberOfShips; i++){
+    const AlienShips = new AlienShip(`Alien${i}`)
+    ships.push(AlienShips)
+}
+
+
+
 
 //Both of my vanilla buttons
 const startGunFightButton = document.getElementById('Start-Conflict')
