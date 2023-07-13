@@ -99,6 +99,9 @@ runAway.addEventListener('click' , () =>{
 
 //This kinda is bad because I could have just used a for loop after my-
 //event listener below I will highlight keep elements that cued me in on why I couldve just used a for loop
+//In a version that was never pushed I tried the for loop but was unsucessful
+
+
 
 //this is the same as saying let i=0;
 let shipTargetingIndex = 0;
@@ -107,15 +110,16 @@ startGunFightButton.addEventListener('click', () =>{
     const targetedShip = ships[shipTargetingIndex];
     UssAssembly.attack(targetedShip);
 
-        
+        //if enemy is alive after we attacked them they attack back
         if(targetedShip.hull > 0){
             targetedShip.attack(UssAssembly)
         }else{
+            //If an enemy;s health is 0 or lower than that then it is dead
             console.log(`${targetedShip.name} have been defeated`)
             //My increment
             shipTargetingIndex++;
 
-            //My condition to keep looping 
+            //My condition if my index var that I made above has reached the ships length then all ships were destroyed
             if(shipTargetingIndex >= ships.length){
                 turnOffButtons()
                 console.log('All Ships have been destroyed')
@@ -129,6 +133,8 @@ startGunFightButton.addEventListener('click', () =>{
 
     
 })
+
+
 
 
 
